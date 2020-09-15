@@ -5,10 +5,20 @@ import styles from "./App.module.css";
 
 import { fetchData } from "./api";
 
+import logo from './imgs/image.png';
+
 class App extends Component {
   state = {
     data: {},
+    country: ''
   };
+
+  handleCountryChange = async(country)=>{
+    console.log(country);
+    const fetchedData = await fetchData(country);
+    console.log(fetchedData);
+    this.setState({ data: fetchedData, country: country });
+  }
 
   async componentDidMount() {
     const fetchedData = await fetchData();
@@ -17,13 +27,18 @@ class App extends Component {
   }
 
   render() {
-    const { data } = this.state;
-    console.log(data);
+    const { data,country } = this.state;
+    console.log(data, country);
     return (
       <div className={styles.container}>
+        <img 
+        className={styles.image}
+        alt="COVID-19"
+        src={logo}
+        />
         <Cards data={data} />
-        <CountryPicker />
-        <Chart />
+        <CountryPicker handleCountryChange={this.handleCountryChange}/>
+        <Chart  data={data} country={country} />
       </div>
     );
   }

@@ -23,7 +23,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
               <CountUp
                 start={0}
                 end={confirmed.value}
-                duration={60}
+                duration={1}
                 separator=","
                 //easingFn="12"
               />
@@ -47,7 +47,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
               <CountUp
                 start={0}
                 end={recovered.value}
-                duration={60}
+                duration={1}
                 separator=","
                 //easingFn="12"
               />
@@ -71,7 +71,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
               <CountUp
                 start={0}
                 end={deaths.value}
-                duration={60}
+                duration={1}
                 separator=","
                 //easingFn="12"
               />
